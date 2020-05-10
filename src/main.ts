@@ -58,11 +58,11 @@ function deleteUsedTrigger() {
   if (!properties) {
     return
   }
-  const data = SpreadsheetApp
+
+  const range = SpreadsheetApp
     .openById(properties.SHEET_ID)
     .getDataRange()
-    .getValues();
-  
+  const data = range.getValues();
   const triggers = ScriptApp.getProjectTriggers()
   data.forEach(d => {
     const trigger = triggers.find(t => t.getUniqueId() === d[0]);
@@ -70,6 +70,7 @@ function deleteUsedTrigger() {
       ScriptApp.deleteTrigger(trigger);
     }
   })
+  range.clearContent();
 }
 
 function getEventToday(date: Date) {
