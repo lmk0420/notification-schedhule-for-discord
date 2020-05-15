@@ -1,3 +1,7 @@
+/*
+* Create a trigger that fetches an appointment from the calendar every day at 4-5 am 
+* and executes doDiscordWebhook() 30 minutes before the appointment start time.
+*/
 function createTrigger() {
   const properties = getProperties()
   if (!properties) {
@@ -24,6 +28,9 @@ function createTrigger() {
   sheet.getSheets()[0].getRange(1, 1, row, 1).setValues(trigerIds);
 }
 
+/*
+* Get someone scheduled in 30 minutes and notify discord about it
+*/
 function doDiscordWebhook() {
   const properties = getProperties()
   if (!properties) {
@@ -53,6 +60,9 @@ function doDiscordWebhook() {
   console.log(res)
 }
 
+/*
+* Delete all triggers described in the spreadsheet
+*/
 function deleteUsedTrigger() {
   const properties = getProperties()
   if (!properties) {
@@ -73,6 +83,9 @@ function deleteUsedTrigger() {
   range.clearContent();
 }
 
+/*
+* Get all today's schedule
+*/
 function getEventToday(date: Date) {
   const properties = getProperties()
   if (!properties) {
