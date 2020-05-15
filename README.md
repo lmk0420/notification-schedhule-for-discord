@@ -1,1 +1,1 @@
-# notification-schedule
+# notification-schedule-for-discord
