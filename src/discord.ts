@@ -18,14 +18,18 @@ function doDiscordWebhook() {
       && (e.getStartTime().getTime() >= now.getTime()))
     );
   
-    const creators = notifyEvents.map(e => e.getCreators());
-    const content = `${creators.join(", ")}さんが約30分後に来ます`;
-    const res = UrlFetchApp.fetch(properties.DISCORD_WEBHOOK_URL, {
-      method: "post",
-      payload: {
-        "content": content
-      }
-    });
+  const creators = notifyEvents.map(e => e.getCreators());
+  if (creators.length === 0) {
+    return
+  }
+  
+  const content = `${creators.join(", ")}さんが約30分後に来ます`;
+  const res = UrlFetchApp.fetch(properties.DISCORD_WEBHOOK_URL, {
+    method: "post",
+    payload: {
+      "content": content
+    }
+  });
   
     console.log(res)
 }
