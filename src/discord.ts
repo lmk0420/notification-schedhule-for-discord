@@ -8,7 +8,7 @@ function doDiscordWebhook() {
     }
   
     const now = new Date();
-    const upper = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + 30);
+    const upper = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + 35);
     const events = getEventToday(now)
     if (!events) {
       return
@@ -31,5 +31,5 @@ function doDiscordWebhook() {
     }
   });
   
-    console.log(res)
+  console.log(res)
 }
